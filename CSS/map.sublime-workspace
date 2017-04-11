@@ -1,0 +1,584 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"pa",
+				"padding-right"
+			],
+			[
+				"in",
+				"inline"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"bcak",
+				"background-color"
+			],
+			[
+				"tabl",
+				"tablinks"
+			],
+			[
+				"cla",
+				"className"
+			],
+			[
+				"get",
+				"getElementByClassName"
+			],
+			[
+				"tal",
+				"tablinks"
+			],
+			[
+				"wind",
+				"windSpeed"
+			],
+			[
+				"TEMP",
+				"TEMP"
+			],
+			[
+				"a",
+				"a"
+			],
+			[
+				"p",
+				"p"
+			],
+			[
+				"Wind",
+				"windSpeed"
+			],
+			[
+				"pop",
+				"popup"
+			],
+			[
+				"Pop",
+				"PopupTemplate"
+			],
+			[
+				"gl_",
+				"gl_station"
+			],
+			[
+				"gra",
+				"GraphicsLayer"
+			],
+			[
+				"n",
+				"n"
+			],
+			[
+				"info",
+				"infoWindow"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"add",
+				"add"
+			],
+			[
+				"set",
+				"setInfoTemplate"
+			],
+			[
+				"grap",
+				"GraphicsLayer"
+			],
+			[
+				"gl",
+				"gl_temp"
+			],
+			[
+				"infot",
+				"InfoTemplate"
+			],
+			[
+				"g",
+				"g"
+			],
+			[
+				"z",
+				"z"
+			],
+			[
+				"dom",
+				"domConstruct"
+			],
+			[
+				"infow",
+				"InfoWindow"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"act",
+				"actionchoice"
+			],
+			[
+				"let",
+				"left"
+			],
+			[
+				"align",
+				"align-content"
+			],
+			[
+				"ad",
+				"Add"
+			],
+			[
+				"c",
+				"c"
+			],
+			[
+				"ac",
+				"actionchoice"
+			],
+			[
+				"Gate",
+				"Gatename"
+			],
+			[
+				"Ed",
+				"Edit_values"
+			],
+			[
+				"key",
+				"Key"
+			],
+			[
+				"D",
+				"DateTime"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"l",
+				"log"
+			],
+			[
+				"v",
+				"visible"
+			],
+			[
+				"Get",
+				"GetWindSpeedLyrToggle"
+			],
+			[
+				"Ge",
+				"GetTempLyrToggle"
+			],
+			[
+				"Gr",
+				"GraphicsLayer"
+			],
+			[
+				"re",
+				"removeLayer"
+			],
+			[
+				"G",
+				"GraphicsLayer"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"s",
+				"s"
+			],
+			[
+				"R",
+				"red"
+			],
+			[
+				"Gra",
+				"GraphicsLayer"
+			],
+			[
+				"Simpl",
+				"SimpleMarkerSymbol"
+			],
+			[
+				"Laye",
+				"layers"
+			],
+			[
+				"di",
+				"div	Tag"
+			],
+			[
+				"f",
+				"font	Tag"
+			],
+			[
+				"wd",
+				"width"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"ti",
+				"title	Tag"
+			],
+			[
+				"h",
+				"h5	Tag"
+			],
+			[
+				"d",
+				"div	Tag"
+			],
+			[
+				"sr",
+				"startExtent"
+			],
+			[
+				"fa",
+				"fawnData"
+			],
+			[
+				"ny",
+				"ny-housing"
+			],
+			[
+				"t",
+				"TileLayer"
+			],
+			[
+				"st",
+				"style	Attr"
+			],
+			[
+				"oci_c",
+				"oci_connect"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/zhaohe/htdocs/map/script/GetJson.js",
+			"settings":
+			{
+				"buffer_size": 8149,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/zhaohe/htdocs/map",
+		"/Users/zhaohe/htdocs/map/backup_file",
+		"/Users/zhaohe/htdocs/map/CSS",
+		"/Users/zhaohe/htdocs/map/script"
+	],
+	"file_history":
+	[
+		"/Users/zhaohe/htdocs/map/map.sublime-project",
+		"/Users/zhaohe/htdocs/map/index.sublime-workspace",
+		"/Users/zhaohe/htdocs/map/index.html",
+		"/Users/zhaohe/htdocs/map/READ.md",
+		"/private/var/folders/w7/m142spsn1352r1pw776n8b_h0000gn/T/caeb8ae5-930b-4703-bdb3-622346ee7b42/h/cnswww-fawn/test.fawn.ifas.ufl.edu/htdocs_testing/maintenance/tables.js",
+		"/Users/zhaohe/课程内容/ZHAO_HE/makefile",
+		"/Users/zhaohe/课程内容/ZHAO_HE/RBTree.java",
+		"/Users/zhaohe/课程内容/ZHAO_HE/bbst.java",
+		"/Users/zhaohe/htdocs/map/script/GetJson.js",
+		"/Users/zhaohe/htdocs/map/notUsing/script.js",
+		"/Users/zhaohe/htdocs/GetJson.js",
+		"/Users/zhaohe/Desktop/tables.js",
+		"/Users/zhaohe/Desktop/tables.php",
+		"/Users/zhaohe/Desktop/index.php",
+		"/Users/zhaohe/Desktop/maintenance.js",
+		"/Users/zhaohe/课程内容/CNT5106c/P2P_11.29/src/Server.java",
+		"/Users/zhaohe/课程内容/CNT5106c/P2P_11.29/src/ClientThread.java",
+		"/private/etc/apache2/httpd.conf",
+		"/Users/zhaohe/htdocs/index.html",
+		"/Users/zhaohe/Desktop/jquery-csv-master/examples/file-handling.html",
+		"/Users/zhaohe/htdocs/index.php",
+		"/Users/zhaohe/htdocs/test.html",
+		"/Users/zhaohe/Desktop/jquery-csv-master/src/jquery.csv.min.js",
+		"/Users/zhaohe/Desktop/jquery-csv-master/src/jquery.csv.js",
+		"/Users/zhaohe/htdocs/MobileIrrLab1/includes/KLogger.php",
+		"/Users/zhaohe/htdocs/MobileIrrLab/control_login.php",
+		"/Users/zhaohe/htdocs/MobileIrrLab/workspace/evaluation/invoice/invoice_pdf.php",
+		"/Users/zhaohe/htdocs/map/test.html",
+		"/private/var/folders/w7/m142spsn1352r1pw776n8b_h0000gn/T/caeb8ae5-930b-4703-bdb3-622346ee7b42/h/cnswww-fawn/test.fawn.ifas.ufl.edu/htdocs_testing/maintenance/tables.php",
+		"/Users/zhaohe/htdocs/map/CSS/checkbox_style.css",
+		"/Users/zhaohe/htdocs/map/CSS/style.css",
+		"/Users/zhaohe/htdocs/map/CSS/checkbox_style",
+		"/private/var/folders/w7/m142spsn1352r1pw776n8b_h0000gn/T/caeb8ae5-930b-4703-bdb3-622346ee7b42/h/cnswww-fawn/test.fawn.ifas.ufl.edu/htdocs_testing/maintenance/index.php",
+		"/Users/zhaohe/htdocs/maintenance/database/database.php",
+		"/Users/zhaohe/htdocs/maintenance/index.php",
+		"/Users/zhaohe/htdocs/maintenance/database/medoo.php",
+		"/Users/zhaohe/htdocs/maintenance/tables.js",
+		"/Users/zhaohe/htdocs/maintenance/tables.php",
+		"/Users/zhaohe/htdocs/maintenance/maintenance.js",
+		"/Users/zhaohe/Desktop/MuscleMiner/MuscleMinerEdgesDetection_ZhaoHe/src/miscellaneous/edgesChns.m",
+		"/Users/zhaohe/Desktop/MuscleMiner/MuscleMinerEdgesDetection_ZhaoHe/src/miscellaneous/edgesDetect.m",
+		"/Users/zhaohe/Desktop/MuscleMiner/MuscleMinerEdgesDetection_ZhaoHe/edgeDetection.m",
+		"/Users/zhaohe/dbms3.sql",
+		"/Users/zhaohe/Desktop/MuscleMinerEdgesDetection_ZhaoHe/src/miscellaneous/edgesDetect.m",
+		"/Users/zhaohe/Desktop/MuscleMinerEdgesDetection_ZhaoHe/edgeDetection.m",
+		"/Users/zhaohe/Desktop/MuscleMinerEdgesDetection_ZhaoHe/src/miscellaneous/edgesChns.m",
+		"/Users/zhaohe/Downloads/modelBsds.mat",
+		"/Users/zhaohe/htdocs/map/NotUsing/script.js",
+		"/Users/zhaohe/htdocs/map/NotUsing/index.html",
+		"/Users/zhaohe/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/zhaohe/htdocs/map/style.css",
+		"/Users/zhaohe/htdocs/JsonData/index.html",
+		"/Users/zhaohe/htdocs/JsonData/script/GetJson.js",
+		"/Users/zhaohe/htdocs/map/script.js",
+		"/Users/zhaohe/htdocs/map/1.html",
+		"/Users/zhaohe/Desktop/DemoMusle latest version/static/style.css",
+		"/Users/zhaohe/Desktop/DemoMusle/templates/entry.html",
+		"/Users/zhaohe/Desktop/MusleDescription/templates/index.html",
+		"/Users/zhaohe/htdocs/StockMarket/index.html",
+		"/Users/zhaohe/Desktop/untitled folder/index.html",
+		"/Users/zhaohe/Desktop/MusleDescription/static/style.css",
+		"/Users/zhaohe/htdocs/StockMarket/css/virtual-lawn.css",
+		"/Users/zhaohe/Desktop/MusleDescription/musle_caption.py",
+		"/Users/zhaohe/htdocs/bootstrap-map-js-master/templates/fullmap-template/index.html",
+		"/Users/zhaohe/htdocs/map/go-pear.html",
+		"/Users/zhaohe/Desktop/MuscleMinerEdgesDetection_ZhaoHe/toolbox-master/channels/imPad.m",
+		"/Users/zhaohe/Desktop/MuscleMinerEdgesDetection_ZhaoHe/toolbox-master/channels/rgbConvert.m",
+		"/Users/zhaohe/.bash_profile",
+		"/Users/zhaohe/Desktop/teacherlogin.aspx.cs",
+		"/Applications/XAMPP/xamppfiles/htdocs/index.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/test.php",
+		"/Users/zhaohe/tomcat/bin/startup.bat",
+		"/Users/zhaohe/Documents/stockmarket/server.js",
+		"/Users/zhaohe/Documents/stockmarket/showResult.html",
+		"/Users/zhaohe/Documents/workspace2/dbms_node.js/package.json",
+		"/Users/zhaohe/Desktop/sudoku.java",
+		"/Users/zhaohe/Desktop/hashtable.java",
+		"/Users/zhaohe/Desktop/hashtable",
+		"/Users/zhaohe/GitHub/web/GrowerMap/src/log4j.properties",
+		"/Users/zhaohe/Desktop/<html>",
+		"/Users/zhaohe/Desktop/刷题/remove_duplicate_list.java"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"z-index",
+			"$.post",
+			".post",
+			"Directory",
+			"DocumentRoot",
+			"result",
+			"roundOne",
+			"Edit_values",
+			"edit",
+			"tableInfo",
+			"Keys",
+			"arguments",
+			"tbn",
+			"location",
+			"actchoice",
+			"choice",
+			"$_SERVER",
+			"hr",
+			"index",
+			"PATH"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"entry"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/zhaohe/htdocs/map/script/GetJson.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 8149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "map.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 261.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
