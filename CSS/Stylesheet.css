@@ -97,9 +97,9 @@ h2 a:hover{text-decoration:none;}
 
 
 /* The footer */
-#footer { width:920px; margin: 0 auto; clear: both; border-top: 1px solid #DCDCDC; padding:20px;color: #777;  background: #fff }
-#footer .rightcontent  { float: right; text-align: right; background: #FFF; }
-#footer a { text-decoration: none; background: #FFF }
+.footer { width:920px; margin: 0 auto; clear: both; border-top: 1px solid #DCDCDC; padding:20px;color: #000;  }
+.footer .rightcontent  { float: right; text-align: right; }
+.footer a { text-decoration: none; }
 
 
 

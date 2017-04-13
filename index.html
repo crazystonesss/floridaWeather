@@ -4,7 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <title></title>
-    <script src="script/jquery-1.8.1.min.js" type="text/javascript"></script>
+    <!--<script src="script/jquery-1.8.1.min.js" type="text/javascript"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	
+
+	
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="script/kendo.all.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="script/jquery.cookie.js"></script>
@@ -19,30 +23,95 @@
     <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"> -->
     <!-- Default Theme -->
     <!-- <link rel="stylesheet" href="owl-carousel/owl.theme.css"> -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/style.css">
+   <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">-->
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./CSS/style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/Stylesheet.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.17/esri/css/esri.css">
     <!-- <link rel="stylesheet" type="text/css" href="CSS/esri/css/esri.css"> -->
+	<style>
+
+	.footer{
+		position:fixed;
+		left:0px;
+		bottom:0px;
+		background-color:#041b23;
+		width:100%;
+	}
+	.footer a {
+		color:white;	
+	}
+	
+
+	#footerContain{
+		width:93%;
+		max-width: 986px;
+		margin: 0 auto;
+		padding-top: 0px;
+		position: relative;
+	}
+	
+	#map_container {
+		height:calc(100% - 69px);
+	}
+	.topbar .img-left {
+		float:left;
+		max-width:250px;
+		position:fixed;
+		margin-top:10px;
+	}
+	.topbar .img-right {
+		float:right;
+		margin-right:60px;
+		max-width:80px;
+	}
+	
+	.side_menu_tabcontent div {
+		height:40px;
+		padding-top:6px;
+		padding-left:5px;
+		color:white;
+		background-color:#333333;
+		border-radius:4px;
+		border-top:0.5px solid #A9A9A9;
+		border-bottom:0.5px solid #A9A9A9;
+	}
+	
+	input[type="button"]:hover {
+		cursor:pointer;
+	}
+	
+	</style>
+<script>
+/*changed  .map_change in style.css
+  comment   right: 20%; width: 80%;*/
+</script>
   </head>
   <body>
 
     <div id="map_wrapper">
-      <div id="map_container">
         <div data-role="header" class="topbar_back">
-          <div class="topbar">
 
-          </div>
+	    <div class="topbar">
+			<div>
+				<img class="img-left" src="img/imgs/header/header left.png">
+			</div>
+			<div>
+				<img class="img-right" src ="img/imgs/header/header right.png">
+			</div>			
+	    </div>
           <div class="menu">
+		  
               <div class="menu_btn"  onclick="myFunction(this)">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
-
               </div>
           </div>
-        </div>
-        <div id="myDropdown" class="dropdown-content">
+        </div>	
+		        <div id="myDropdown" class="dropdown-content" style="background-color: #333333;">
         <div class="tabs" ng-app="myApp" ng-controller="myCtrl">
             <ul>
               <li>
@@ -58,67 +127,103 @@
             </ul>
 
       <!-- checkboxes on side_menu_col start-->
-
+		
       <div id="FAWN" class="side_menu_tabcontent">
 
-        <div >
-          <input type="checkbox" name="openDropdownMenuFawn" id="openDropdownMenuFawn" unchecked>
-          <span>Fawn Weather Data Info</span>
-          <!-- <label for="squaredFour">Fawn Weather Data Info</label> -->
-        </div>
 
-        <!-- Temperature Layer checkbox begin -->
+	  
+	  
+        <div>
+			<label class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" name="openDropdownMenuFawn" id="openDropdownMenuFawn" unchecked>
+				<span class="custom-control-indicator"></span>
+				<span class="custom-control-description">Fawn Weather Data Info</span>
+			</label>		
+		</div>
 
-          <div id="TemperatureLayerFawn" style="width: 100%;height: 20%; max-height: 70px; position: relative; background-color: grey;border: 1px solid #797979; display: none;">
-              <div class="roundedOne">
+		<div id="TemperatureLayerFawn" style="display:none;padding-left: 30px;">
+			<label class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="GetTemp" unchecked>
+				<span class="custom-control-indicator"></span>
+				<span class="custom-control-description">Temperature Layer</span>
+			</label>			
+		</div>
+		
+		<div id = "WindSpeedLayerFawn" style="display:none; padding-left: 30px;">
+			<label class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="GetWindSpeed" unchecked>
+				<span class="custom-control-indicator"></span>
+				<span class="custom-control-description">WindSpeed Layer</span>
+			</label>		
+		</div>
+        <!-- Temperature Layer checkbox begin 
+
+          <div id="TemperatureLayerFawn" style="width: 100%; display:block;position: relative; border: 1px solid #797979; display: none;">
+              <div class="roundedOne">  useless
                 <input type="checkbox" id="GetTemp" value="Temperature Layer" unchecked>
-                <label for="GetTemp"></label>
+                <label for="GetTemp">Temperature Layer</label>
               </div>
               <div style="position: relative;display: inline-block;left: 30px; top:23px; color: rgb(221, 221, 221);">Temperature Layer</div>
-          </div>
+          </div>-->
 
         <!-- Temperature Layer checkbox end -->
 
-        <!-- WindSpeed Layer checkbox start -->
+        <!-- WindSpeed Layer checkbox start
 
-          <div id="WindSpeedLayerFawn" style="width: 100%;height: 20%; max-height: 70px; position: relative; background-color: grey;border: 1px solid #797979; display: none;">
+          <div id="WindSpeedLayerFawn" style="width: 100%;max-height: 70px; position: relative; background-color: grey;border: 1px solid #797979; display: none;">
               <div class="roundedOne">
                 <input type="checkbox" id="GetWindSpeed" value="WindSpeed Layer" unchecked>
                 <label for="GetWindSpeed"></label>
               </div>
               <div style="position: relative;display: inline-block;left: 30px; top:23px; color: rgb(221, 221, 221);">WindSpeed Layer</div>
-          </div>
+          </div> -->
 
         <!-- WindSpeed Layer checkbox end -->
-
-        <div style="width: 100%;height: 20%; max-height: 70px; position: relative;background-color: grey;border: 1px solid #797979">
+		<!--
+        <div style="width: 100%;height: 20%; max-height: 70px; position: relative;border: 1px solid #797979">
             <input type="button" name="search" id="searchBarForFAWN" onclick="openSearchBar(this)">Search for Grower and Satation</input>
         </div>
-
+		-->
+		<!--<button type="button" class="btn btn-default" data-toggle = "collapse" data-target = "#searchForFawn">Search for Grower and Satation</button>-->
+		<div>
+			<label class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="searchBarForFAWN">
+				<span class="custom-control-indicator"></span>
+				<span class="custom-control-description">Search for Grower and Satation</span>
+			</label>		
+		</div>
         <!-- fawn search bar starts-->
-          <div id="searchForFawn" style="display:none;">
-            <br><label>Station:</label><br>
-            <select ng-model="SelectedstationName2" ng-options="value for value in fawnStationName" style="max-width: 150px"
-            style="overflow:hidden" >
+          <div id="searchForFawn" class="collapse" style="height:140px; padding-left:30px;">
+            <label>Station:</label><br>
+            <select class = "custom-select" ng-model="SelectedstationName2" ng-options="value for value in fawnStationName"
+            style="overflow:hidden; height:30px;font-size:13px;">
               <option value="">-- Station Name --</option>
             </select>
 
             <br/><br/>
-            <input type="button" ng-click="submitFawn(SelectedstationName2)" name="submit" value="submit"/>
+            <input type="button" class="btn btn-secondary btn-sm" ng-click="submitFawn(SelectedstationName2)" name="submit" value="submit"/>
           </div>
         <!-- fawn search bar ends -->
 
         </div>
 
       <div id="Fdacswx" class="side_menu_tabcontent">
-
-        <div>
-          <input type="checkbox" name="openDropdownMenuFdacswx" id="openDropdownMenuFdacswx" unchecked>
-          <span>Fdacswx Weather Data Info</span>
-        </div>
-
+		<div>
+			<label class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="openDropdownMenuFdacswx" unchecked>
+				<span class="custom-control-indicator"></span>
+				<span class="custom-control-description">Fdacswx Weather Data Info</span>
+			</label>		
+		</div>
         <!-- Temperature Layer checkbox begin -->
-
+		<div id="TemperatureLayerFdacswx" style="display:none;padding-left: 30px;">
+			<label class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="GetTempFdacswx" unchecked>
+				<span class="custom-control-indicator"></span>
+				<span class="custom-control-description">Temperature Layer</span>
+			</label>			
+		</div>		
+		<!--
           <div id="TemperatureLayerFdacswx" style="width: 100%;height: 20%; max-height: 70px; position: relative; background-color: grey;border: 1px solid #797979; display: none;">
               <div class="roundedOne">
                 <input type="checkbox" id="GetTempFdacswx" value="Temperature Layer" unchecked>
@@ -126,10 +231,19 @@
               </div>
               <div style="position: relative;display: inline-block;left: 30px; top:23px; color: rgb(221, 221, 221);">Temperature Layer</div>
           </div>
-
+		-->
         <!-- Temperature Layer checkbox end -->
 
+		<div id = "WindSpeedLayerFdacswx" style="display:none; padding-left: 30px;">
+			<label class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="GetWindSpeedFdacswx" unchecked>
+				<span class="custom-control-indicator"></span>
+				<span class="custom-control-description">WindSpeed Layer</span>
+			</label>		
+		</div>
+		
         <!-- WindSpeed Layer checkbox start -->
+		<!--
           <div id="WindSpeedLayerFdacswx" style="width: 100%;height: 20%; max-height: 70px; position: relative; background-color: grey;border: 1px solid #797979; display: none;">
               <div class="roundedOne">
                 <input type="checkbox" id="GetWindSpeedFdacswx" value="Temperature Layer" unchecked>
@@ -137,41 +251,61 @@
               </div>
               <div style="position: relative;display: inline-block;left: 30px; top:23px; color: rgb(221, 221, 221);">WindSpeed Layer</div>
           </div>
+		  -->
         <!-- WindSpeed Layer checkbox ends -->
 
         <!-- Fadacswx search bar starts -->
+		<div>
+			<label class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="searchBarForFadacs">
+				<span class="custom-control-indicator"></span>
+				<span class="custom-control-description">Search for Grower and Satation</span>
+			</label>		
+		</div>
+<!--		
           <div style="width: 100%;height: 20%; max-height: 70px; position: relative;background-color: grey;border: 1px solid #797979">
             
-                <input type="button" name="search" id="searchBarForFadacs" onclick="openSearchBar(this)">Search for Grower and Satation</input>
+                <input class = "ui-button ui-widget ui-corner-all" type="button" name="search" id="searchBarForFadacs" onclick="openSearchBar(this)">Search for Grower and Satation</input>
        
           </div>
-
-          <div id="searchForFadacs" style="display: none;">
-              <br><label>Grower:</label><br>
-              <select ng-model="selectedGrowerName" ng-options="y for y in growerNames" style="max-width: 150px" ng-change="onChanged(selectedGrowerName)"
-              style="overflow:hidden" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">
+-->
+          <div id="searchForFadacs" style="display: none; height:220px; padding-left:20px;">
+              <label>Grower:</label><br>
+              <select class="custom-select" ng-model="selectedGrowerName" ng-options="y for y in growerNames" ng-change="onChanged(selectedGrowerName)"
+              style="overflow:hidden;height:30px;font-size:13px;" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">
                 <option value="">-- Grower Name --</option>
               </select>
 
-              <br><label>Station:</label><br>
-              <select ng-model="SelectedstationName1" ng-options="value for value in stationName" style="max-width: 150px"
-              style="overflow:hidden" >
+              <br><label for="station">Station:</label><br>
+              <select class="custom-select" name="station" ng-model="SelectedstationName1" ng-options="value for value in stationName"
+              style="overflow:hidden;height:30px;font-size:13px;">
                 <option value="">-- Station Name --</option>
               </select>
 
               <br/><br/>
-              <input type="button" ng-click="submitFadacs(selectedGrowerName, SelectedstationName1)" name="submit" value="submit"/>
+              <input type="button" class="btn btn-secondary btn-sm" ng-click="submitFadacs(selectedGrowerName, SelectedstationName1)" name="submit" value="submit"/>
           </div>
         <!-- Fadacswx search bar ends -->
 
       </div>
 
-      <div id="NOAA" class="side_menu_tabcontent">
+      <div id="NOAA" class="side_menu_tabcontent" >
+		<div>
+			Activities
+		</div>	  
+	  	<div>
+			Webcams
+		</div>	
+		<div>
+			Satellite
+		</div>	
+	<!--	
         <ul>
             <li>Activities</li>
             <li>Webcams</li>
             <li>Satellite</li>
         </ul>
+	-->
       </div>
 
       <div id="searchDropDown">
@@ -182,28 +316,21 @@
     </div>
   </div>
 
-          <!-- start map and panel  -->
-      <div class="map_and_panel" id="map_and_panel">
+      <div id="map_container">
+		  <div class="map_and_panel" id="map_and_panel" style="overflow:hidden; display:block;">
+			  <div id="map" class="map"></div>
+		  </div>
+      </div> 
 
-      <!-- angular search bar -->
-
-            <!-- start draggable window -->
-		<!--
-        <div id="draggable" class="ui-widget-content">
-            <div id="map_panel" class="map_panel">
-            </div>
-        </div> 
-		-->
-            <!-- end draggable window -->
-
-          <div id="map" class="map"></div>
-      </div>
-          <!-- end map and panel -->
-      <!-- footer starts  -->
-
-      <!-- footer ends -->		  
-      </div>
-
+		<div class = "footer">
+			<div id = "footerContain">
+				<div class="rightcontent" style="color:white;">&copy; Copyright 2014, TERMINALFOUR Solutions Limited. - <a href="#">RSS Feed</a>
+					<br /><a href="#">Edit this page</a>
+				</div>
+					<a href="#">Contact Us</a> - <a href="#">Site Map</a> <br/>
+					<a href="http://validator.w3.org/check?uri=referer" title="Validate">XHTML</a> - <a href="http://jigsaw.w3.org/css-validator/check/referer" title="Validate">CSS</a>
+			</div>
+		</div>	  
     </div>
 <!--     <div id="map"></div> -->
       
@@ -212,14 +339,7 @@
 	  
 	  
 	  
-	  
-	  	 <div data-role="footer" data-position="fixed" style="background-color: black">
-        <div class="rightcontent">&copy; Copyright 2014, TERMINALFOUR Solutions Limited. - <a href="#">RSS Feed</a>
-            <br /><a href="#">Edit this page</a>
-        </div>
-            <a href="#">Contact Us</a> - <a href="#">Site Map</a>
-            <a href="http://validator.w3.org/check?uri=referer" title="Validate">XHTML</a> - <a href="http://jigsaw.w3.org/css-validator/check/referer" title="Validate">CSS</a>
-      </div>	  
+
 	  
 	  
 	  
@@ -229,6 +349,9 @@
       <script type="text/javascript" src="./script/constant.js"></script>
       <script type="text/javascript" src="./script/init.js"></script>
       <script type="text/javascript" src="./script/angularSearch.js"></script>
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	 
+
 
       <script type="text/javascript">
         $(document).ready(function(){
@@ -241,7 +364,29 @@
             console.log($.cookie('station'));
             window.open("http://fawn.ifas.ufl.edu/tools/coldp/cold_protection_2015.php");
           }
-        })
+		  
+		  
+		$("#searchBarForFAWN").change(function(){
+			if (this.checked) {
+			
+				$("#searchForFawn").css("display", "block");
+			} else {
+				$("#searchForFawn").css("display", "none");
+			}
+		});		
+		
+		$("#searchBarForFadacs").change(function(){
+			if (this.checked) {
+				$("#searchForFadacs").css("display", "block");
+			} else {
+				$("#searchForFadacs").css("display", "none");
+			}
+		});		
+	})
+		
+
+
+
       </script>
 
   </body>
