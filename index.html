@@ -34,27 +34,63 @@
 	<style>
 
 	.footer{
+		z-index:3;
 		position:fixed;
 		left:0px;
 		bottom:0px;
 		background-color:#041b23;
 		width:100%;
+		height:90px;
+		background: #041b23; /* Old browsers */
+		background: -moz-linear-gradient(top, #041b23 0%, #093343 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#041b23), color-stop(100%,#093343)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #041b23 0%,#093343 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #041b23 0%,#093343 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, #041b23 0%,#093343 100%); /* IE10+ */
+		background: linear-gradient(top, #041b23 0%,#093343 100%); /* W3C */
+			
 	}
 	.footer a {
 		color:white;	
+		cursor:pointer;
+		
 	}
-	
+	#footerContain ul li a:hover {
+		color:#7b933e;
+		text-decoration:underline;
+	}
+	#footerContain ul{
+		margin-left: 50px;
+		display: block;
+		clear: both;
+		
+	}
+	#footerContain ul li{
+		display:inline;
+		padding: 2px 5px;
+	}	
 
 	#footerContain{
-		width:93%;
-		max-width: 986px;
+		font-size:10px;
+		width:100%;
 		margin: 0 auto;
 		padding-top: 0px;
 		position: relative;
+		float:left;
 	}
-	
+	a.ufSig{	
+		position: absolute;
+		right:0;
+		top: 30px;
+		width: 195px;
+		height: 36px;
+		display: block;
+		background: transparent url(img/UF_Signature.png) 0 0 no-repeat;
+		text-indent: -9999em;
+	}
+		
 	#map_container {
-		height:calc(100% - 69px);
+		z-index:1;
 	}
 	.topbar .img-left {
 		float:left;
@@ -317,11 +353,16 @@
   </div>
 
       <div id="map_container">
-		  <div class="map_and_panel" id="map_and_panel" style="overflow:hidden; display:block;">
+		  <div class="map_and_panel" id="map_and_panel">
+			<div id="draggable" class="ui-widget-content">
+				<div id="map_panel" class="map_panel">
+				</div>
+			</div>				  
 			  <div id="map" class="map"></div>
+		  
 		  </div>
       </div> 
-
+<!--
 		<div class = "footer">
 			<div id = "footerContain">
 				<div class="rightcontent" style="color:white;">&copy; Copyright 2014, TERMINALFOUR Solutions Limited. - <a href="#">RSS Feed</a>
@@ -332,6 +373,33 @@
 			</div>
 		</div>	  
     </div>
+	-->
+	<div class="footer">
+		<div id="footerContain">
+			<ul>
+				<li><a href="/contact.php">ContactFAWN</a></li>
+				<li><a href="/">Home</a></li>
+				<li><a href="/data/" >Database</a></li>
+				<li><a href="/climate.php">Climate</a></li>
+				<li><a href="/tools/">Tools</a></li>
+				<li><a href="/about_index.php">About</a></li>
+				<li><a href="/donate.php"><strong>DONATE</strong></a></li>
+			</ul>
+			<ul>
+				<li><a href="">© University of Florida-Gainesville, Florida 32611; 352-392-0429</a></li>
+			</ul>
+			<ul>
+				<li><a href="">Disability Services</a></li>
+				<li><a href="">Privacy Policy</a></li>
+			</ul>
+
+			
+
+		</div>   
+		<a href="http://www.ufl.edu" class="ufSig" style="margin-right:50px;">University of Florida</a>
+
+	</div><!-- /footer -->	
+	
 <!--     <div id="map"></div> -->
       
 	  

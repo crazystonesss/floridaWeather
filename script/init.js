@@ -44,11 +44,14 @@
 
         // create map and layers
         map = new Map("map", {
+			
           basemap: "streets",
           center: [-81.379234,28.53833],
           zoom: 8,
           infoWindow: popup,
           sliderPosition: "top-right",
+		  showAttribution: false,
+		  logo:false
           // sliderStyle: "large"
         });
 
