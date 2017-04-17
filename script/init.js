@@ -210,7 +210,7 @@
         //fawn overall control checkbox
         var FawnControlBox = dom.byId('openDropdownMenuFawn');
         var FdacswxControlBox = dom.byId('openDropdownMenuFdacswx');
-
+		
         on(FawnControlBox, 'change', function(){
           map.removeLayer(pinpointLayer);
           // below part is setting two button exclusive to each other.
@@ -243,9 +243,11 @@
               i++;
             }
             //document.getElementById('searchForFawn').style.display = 'block';
+			
             query("#TemperatureLayerFawn").style("display","block");
             query("#WindSpeedLayerFawn").style("display","block");
-            gl_attr_temp.show();// = true; // change to delete layer 
+            
+			gl_attr_temp.show();// = true; // change to delete layer 
           }else{
             var b = 0;
             while(gl_attr.graphics[b] != null){
@@ -253,14 +255,17 @@
               // gl_attr.graphics[b].visible = false;
               b++;
             }
+			
             query("#TemperatureLayerFawn").style("display","none");
             query("#WindSpeedLayerFawn").style("display","none");
+			
             gl_attr_temp.hide();
             //document.getElementById('searchForFawn').style.display = 'none';
           }
           
 
         })
+		
 
         // on(GetStationLyrToggle, "change", function(){
         //   map.removeLayer(pinpointLayer);
@@ -644,7 +649,7 @@
           // put popup in the middle
           query(".esriPopupWrapper").style({
             left : ( width - (width * 0.8) )/ 2 - 25 + "px",
-            top : ( height - (height * 0.7) )/ 7 - 25 + "px",
+            top : ( height - (height * 0.7) )/ 7 + 25 + "px",
           });
 
           // document.getElementsByClassName("esriPopupWrapper")[0].style.minWidth = width * 0.6 + "px";
