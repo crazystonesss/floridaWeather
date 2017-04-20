@@ -33,8 +33,7 @@
 
       var lastestDataNameFawn = ['stnName', 'dateTimes','temp2mF', 'windSpeed10mMph','relHum2mPct','temp60cmF','temp10mF','soilTemp10cmF', 'rainFall2mInch','totalRad2mWm2','windDir10mDeg','dewPoint2mF'];
 
-      // var lastestDataNameFawn = ['stnName', 'stnID', 'dateTimes','temp2mF','temp60cmF','temp10mF','soilTemp10cmF', 'rainFall2mInch','totalRad2mWm2','windSpeed10mMph','windDir10mDeg','dewPoint2mF','bp2m','county','facility','wetBulbF','dailyMinTempF','dailyAvgTempF','dailyTotalRainInch','weeklyTotalRainInch','weeklyStartDate','weeklyEndDate'];
-
+     
       var lastestDataNameFdacswx = ['station_id', 'date_time', 'dry_bulb_air_temp', 'wet_bulb_temp', 'humidity', 'wind_speed', 'wind_direction', 'rainfall', 'latitude', 'longitude', 'total_rain_inche_since_installed', 'start_date_of_total_rain', 'station_name', 'vendor_name', 'time_zone', 'solar_radiation', 'et', 'solar_radiation_field_name', 'minutes_old', 'hasET', 'hasSolarRadiation', 'hasRemote', 'hasSoilMoisture', 'standard_date_time', 'fresh', 'grower_name'];
 
         popup = new Popup({
@@ -196,409 +195,344 @@
     map.addLayer(featureLayer);
     glAttrFdacswxTemp.visible = false;
 
-    // mapDataFilter(glAttrFdacswxTemp);
 
-        // fawn checkbox
-        // var GetStationLyrToggle = dom.byId("GetStation");
-        var GetTempLyrToggle = dom.byId("GetTemp");
-        var GetWindSpeedLyrToggle = dom.byId("GetWindSpeed");
-
+	
+	
+/*LAYER CONTROL START---------------------------------------------------------------*/
         //fadacswx checkbox
-        var GetTempFdacswx = dom.byId("GetTempFdacswx");
-        var GetWindSpeedFdacswx = dom.byId("GetWindSpeedFdacswx");
-
+        var tempLayer = dom.byId("tempLayer");
+        var windLayer = dom.byId("windLayer");
+		var rainLayer = dom.byId("rainLayer");
         //fawn overall control checkbox
         var FawnControlBox = dom.byId('openDropdownMenuFawn');
         var FdacswxControlBox = dom.byId('openDropdownMenuFdacswx');
 		
-        on(FawnControlBox, 'change', function(){
-          map.removeLayer(pinpointLayer);
-          // below part is setting two button exclusive to each other.
-            // if (FawnControlBox.checked == true)
-            // {
-            //   FawnControlBox.checked = false;
-            //   var b = 0;
-            //     while(gl_attr.graphics[b] != null){
-            //       gl_attr.graphics[b].setSymbol(null);
-            //       b++;
-            //     }
-            // }
-             
-            // if (FawnControlBox.checked == true) {
-            //   FawnControlBox.checked = false;
-            //   var b = 0;
-            //     while(gl_attr.graphics[b] != null){
-            //       gl_attr.graphics[b].setSymbol(null);
-            //       b++;
-            //     }
-            // }       
-
-          gl_attr.visible = FawnControlBox.checked;
-          // console.log(gl_attr.visible);
-          if (gl_attr.visible == true) {
-          var i = 0;;
-            while(gl_attr.graphics[i] != null){
-              var tempSymbol = new SimpleMarkerSymbol().setSize(10).setColor("purple");
-              gl_attr.graphics[i].setSymbol(tempSymbol);
-              i++;
-            }
-            //document.getElementById('searchForFawn').style.display = 'block';
+//FAWN control checkbox of station-fawn and station-fdacs
+/*
+		$("#openDropdownMenuFawn").ready(function(){
+			//map.removeLayer(pinpointLayer);
+			gl_attr.visible = FawnControlBox.checked;	
+			fawnStationPawn(gl_attr.visible);			
+		}).change(function(){
+			console.log(gl_attr.graphics);
 			
-            query("#TemperatureLayerFawn").style("display","block");
-            query("#WindSpeedLayerFawn").style("display","block");
-            
-			gl_attr_temp.show();// = true; // change to delete layer 
-          }else{
-            var b = 0;
-            while(gl_attr.graphics[b] != null){
-              gl_attr.graphics[b].setSymbol(null);
-              // gl_attr.graphics[b].visible = false;
-              b++;
-            }
-			
-            query("#TemperatureLayerFawn").style("display","none");
-            query("#WindSpeedLayerFawn").style("display","none");
-			
-            gl_attr_temp.hide();
-            //document.getElementById('searchForFawn').style.display = 'none';
-          }
-          
-
-        })
+		});
+*/		
+		on(FawnControlBox, 'change', function(){
+			map.removeLayer(pinpointLayer);
+			gl_attr.visible = FawnControlBox.checked;	
+			fawnStationPawn(gl_attr.visible);
+		});
 		
-
-        // on(GetStationLyrToggle, "change", function(){
-        //   map.removeLayer(pinpointLayer);
-        //   if (GetTempLyrToggle.checked == true)
-        //   {
-        //     GetTempLyrToggle.checked = false;
-        //     var b = 0;
-        //       while(gl_attr.graphics[b] != null){
-        //         gl_attr.graphics[b].setSymbol(null);
-        //         b++;
-        //       }
-        //   }
-           
-        //   if (GetWindSpeedLyrToggle.checked == true) {
-        //     GetWindSpeedLyrToggle.checked = false;
-        //     var b = 0;
-        //       while(gl_attr.graphics[b] != null){
-        //         gl_attr.graphics[b].setSymbol(null);
-        //         b++;
-        //       }
-        //   }       
-
-        //   gl_attr.visible = GetStationLyrToggle.checked;
-        //   if (gl_attr.visible == true) {
-        //   var tempSymbol = new SimpleMarkerSymbol().setSize(10).setColor("purple");
-        //   var i = 0;;
-        //     while(gl_attr.graphics[i] != null){
-        //       gl_attr.graphics[i].setSymbol(tempSymbol);
-        //       i++;
-        //     }
-        //     //document.getElementById('searchForFawn').style.display = 'block';
-        //   }else{
-        //     var b = 0;
-        //     while(gl_attr.graphics[b] != null){
-        //       gl_attr.graphics[b].setSymbol(null);
-        //       b++;
-        //     }
-        //     //document.getElementById('searchForFawn').style.display = 'none';
-        //   }
-        // })
-
-        on(GetTempLyrToggle, "change", function(){
-          map.removeLayer(pinpointLayer);
-          // console.log(gl_attr_temp);
-          if (GetWindSpeedLyrToggle.checked == true) {
-              GetWindSpeedLyrToggle.checked = false;
-              var b = 0;
-              while(gl_attr.graphics[b] != null){
-                gl_attr_temp.graphics[b].setSymbol(null);
-                b++;
-              }
-          }
-
-            gl_attr_temp.visible = GetTempLyrToggle.checked;
-            if (gl_attr_temp.visible == true) {
-            var i = 0;;
-              while(gl_attr_temp.graphics[i] != null){
-                gl_attr_temp.graphics[i] = gl_attr_temp.graphics[i];
-                var t = new TextSymbol(gl_attr_temp.graphics[i].attributes.temp10mF).setColor("purple").setHaloSize(30);
-                t.xoffset = 0;
-                t.yoffset = -20;
-                gl_attr_temp.graphics[i].setSymbol(t);
-                i++;
-              }
-              //document.getElementById('searchForFawn').style.display = 'block';
-            }else{
-              var b = 0;
-              while(gl_attr_temp.graphics[b] != null){
-                gl_attr_temp.graphics[b].setSymbol(null);
-                b++;
-              }
-              //document.getElementById('searchForFawn').style.display = 'none';
-            }
-        });
-
-        on(GetWindSpeedLyrToggle, "change", function(){
-            map.removeLayer(pinpointLayer);
-
-            // GetTempFdacswx.checked = false;
-            // var b = 0;
-            //   while(glAttrFdacswx.graphics[b] != null){
-            //     glAttrFdacswx.graphics[b].setSymbol(null);
-            //     b++;
-            //   }
-            //document.getElementById('searchForFadacs').style.display = 'none';
-          // if (GetStationLyrToggle.checked == true) {
-          //     GetStationLyrToggle.checked = false;
-          //     var b = 0;
-          //     while(gl_attr.graphics[b] != null){
-          //       gl_attr.graphics[b].setSymbol(null);
-          //       b++;
-          //     }
-          // }
-          
-          if (GetTempLyrToggle.checked == true) {
-              GetTempLyrToggle.checked = false;
-              var b = 0;
-              while(gl_attr_temp.graphics[b] != null){
-                gl_attr_temp.graphics[b].setSymbol(null);
-                b++;
-              }
-          }
-
-            gl_attr_temp.visible = GetWindSpeedLyrToggle.checked;
-            if (gl_attr_temp.visible == true) {
-            //var tempSymbol = new SimpleMarkerSymbol().setSize(10).setColor("red");
-            var i = 0;;
-              while(gl_attr_temp.graphics[i] != null){
-                var t = new TextSymbol(gl_attr_temp.graphics[i].attributes.windSpeed10mMph).setColor("purple").setHaloSize(30);
-                t.xoffset = 0;
-                t.yoffset = -20;
-                gl_attr_temp.graphics[i].setSymbol(t);
-                i++;
-              }
-              //document.getElementById('searchForFawn').style.display = 'block';
-            }else{
-              var b = 0;
-              while(gl_attr_temp.graphics[b] != null){
-                gl_attr_temp.graphics[b].setSymbol(null);
-                b++;
-              }
-              //document.getElementById('searchForFawn').style.display = 'none';
-            }
-        });
-
-        on(GetTempFdacswx, "change", function(){
-            map.removeLayer(pinpointLayer);
-
-            if (GetWindSpeedFdacswx.checked == true) {
-                GetWindSpeedFdacswx.checked = false;
-                var b = 0;
-                while(glAttrFdacswxTemp.graphics[b] != null){
-                  glAttrFdacswxTemp.graphics[b].setSymbol(null);
-                  b++;
-                }
-            }
-
-            // initializing the visible when fire
-            var zoomScale = map.getZoom();
-            ZoomInOutScale(glAttrFdacswxTemp, zoomScale);
-            // for(var i = 0; i < glAttrFdacswxTemp.graphics.length; i++){
-            //   var p1 = new Point();
-            //   p1 = glAttrFdacswxTemp.graphics[i].geometry;
-            //   for( var j = 0; j < glAttrFdacswxTemp.graphics.length; j++){ 
-            //       var p2 = new Point();
-            //       p2 = glAttrFdacswxTemp.graphics[j].geometry;  
-            
-            //       if(Math.sqrt((p1.x - p2.x)*(p1.x - p2.x) + (p1.y - p2.y)*(p1.y - p2.y)) < 0.15 && (p2.y - p1.y) > 0)
-            //       {
-            //         glAttrFdacswxTemp.graphics[j].visible = false;
-            //       }
-            //   }
-            // }
-
-
-            glAttrFdacswxTemp.visible = GetTempFdacswx.checked;
-            if (glAttrFdacswxTemp.visible == true) {
-            var i = 0;
-              while(glAttrFdacswxTemp.graphics[i] != null){
-                var temp = glAttrFdacswxTemp.graphics[i].attributes.dry_bulb_air_temp;
-                // if (temp.length > 4) {
-                //   temp = temp.substring(0,3);
-                // }
-                // console.log(temp.length);
-                // // temp = temp.toFixed(2);
-                var t = new TextSymbol(temp).setColor("green").setHaloSize(30);
-                t.yoffset = -20;
-                glAttrFdacswxTemp.graphics[i].setSymbol(t);
-                i++;
-              }
-            }else{
-              var b = 0;
-              while(glAttrFdacswxTemp.graphics[b] != null){
-                glAttrFdacswxTemp.graphics[b].setSymbol(null);
-                b++;
-              }
-            }   
-        });
-
-        // on(GetStationFdacswx, "change", function(){
-        //     map.removeLayer(pinpointLayer);
-
-        //     // GetTempLyrToggle.checked = false;
-        //     // var b = 0;
-        //     //   while(gl_attr.graphics[b] != null){
-        //     //     gl_attr.graphics[b].setSymbol(null);
-        //     //     b++;
-        //     //   }
-        //     //document.getElementById('searchForFawn').style.display = 'none';
-        //     if (GetTempFdacswx.checked == true) {
-        //         GetTempFdacswx.checked = false;
-        //         var b = 0;
-        //         while(glAttrFdacswx.graphics[b] != null){
-        //           glAttrFdacswx.graphics[b].setSymbol(null);
-        //           b++;
-        //         }
-        //     }
-          
-        //     if (GetWindSpeedFdacswx.checked == true) {
-        //         GetWindSpeedFdacswx.checked = false;
-        //         var b = 0;
-        //         while(glAttrFdacswx.graphics[b] != null){
-        //           glAttrFdacswx.graphics[b].setSymbol(null);
-        //           b++;
-        //         }
-        //     }
-
-        //     glAttrFdacswx.visible = GetStationFdacswx.checked;
-        //     if (glAttrFdacswx.visible == true) {
-        //     var tempSymbol = new SimpleMarkerSymbol().setSize(10).setColor("green");
-        //     var i = 0;
-        //       while(glAttrFdacswx.graphics[i] != null){
-        //         glAttrFdacswx.graphics[i].setSymbol(tempSymbol);
-        //         i++;
-        //       }
-        //     }else{
-        //       var b = 0;
-        //       while(glAttrFdacswx.graphics[b] != null){
-        //         glAttrFdacswx.graphics[b].setSymbol(null);
-        //         b++;
-        //       }
-        //     } 
-        // });   
-
+//FDACSX control checkbox of station-fawn and station-fdacs
         on(FdacswxControlBox, 'change', function() {
-          map.removeLayer(pinpointLayer);
-
-            // GetTempLyrToggle.checked = false;
-            // var b = 0;
-            //   while(gl_attr.graphics[b] != null){
-            //     gl_attr.graphics[b].setSymbol(null);
-            //     b++;
-            //   }
-            //document.getElementById('searchForFawn').style.display = 'none';
-
-            // initizaling the visible points on map
-            var zoomScale = map.getZoom();
-            ZoomInOutScale(glAttrFdacswx, zoomScale);
-
+			map.removeLayer(pinpointLayer);
             glAttrFdacswx.visible = FdacswxControlBox.checked;
-            if (glAttrFdacswx.visible == true) {
-            var tempSymbol = new SimpleMarkerSymbol().setSize(10).setColor("green");
-            var i = 0;
-              while(glAttrFdacswx.graphics[i] != null){
-                glAttrFdacswx.graphics[i].setSymbol(tempSymbol);
-                i++;
-              }
-              query("#TemperatureLayerFdacswx").style("display","block");
-              query("#WindSpeedLayerFdacswx").style("display","block");
-              glAttrFdacswxTemp.show();
-              glAttrFdacswxTemp.visible = true;
-            }else{
-              var b = 0;
-              while(glAttrFdacswx.graphics[b] != null){
-                glAttrFdacswx.graphics[b].setSymbol(null);
-                b++;
-              }
-              query("#TemperatureLayerFdacswx").style("display","none");
-              query("#WindSpeedLayerFdacswx").style("display","none");
-              glAttrFdacswxTemp.hide();
-              glAttrFdacswxTemp.visible = false;
-            } 
-        })
-
-        on(GetWindSpeedFdacswx, "change", function(){
-            map.removeLayer(pinpointLayer);
-
-            // GetTempLyrToggle.checked = false;
-            // var b = 0;
-            //   while(gl_attr.graphics[b] != null){
-            //     gl_attr.graphics[b].setSymbol(null);
-            //     b++;
-            //   }
-            //document.getElementById('searchForFawn').style.display = 'none';
-            // if (GetTempFdacswx.checked == true) {
-            //     GetTempFdacswx.checked = false;
-            //     var b = 0;
-            //     while(glAttrFdacswx.graphics[b] != null){
-            //       glAttrFdacswx.graphics[b].setSymbol(null);
-            //       b++;
-            //     }
-            // }
-          
-            if (GetTempFdacswx.checked == true) {
-                GetTempFdacswx.checked = false;
-                var b = 0;
-                while(glAttrFdacswxTemp.graphics[b] != null){
-                  glAttrFdacswxTemp.graphics[b].setSymbol(null);
-                  b++;
-                }
-            }
-
+			fdacsStationPawn(glAttrFdacswx.visible);
+        });	
+		
+		/**
+			function that add station point layer when Station -> Fawn weather data info checkbox is checked
+			fawnBox: gl_attr.visible
+		*/
+		function fawnStationPawn(fawnBox) {
+			if (fawnBox) {
+			console.log("function is working");
+				var i = 0;
+				while(gl_attr.graphics[i] != null){
+					console.log("fawn is true while loop");
+					var tempSymbol = new SimpleMarkerSymbol().setSize(10).setColor("purple");
+					gl_attr.graphics[i].setSymbol(tempSymbol);
+				
+					i++;
+				}
+				console.log(gl_attr.graphics.length);
+				gl_attr_temp.show();
+			} else {
+				var b = 0;
+				
+				while(gl_attr.graphics[b] != null){
+					console.log("fawn is false while loop");
+					gl_attr.graphics[b].setSymbol(null);
+					b++;
+				}
+				
+				gl_attr_temp.hide();	
+			}
+		}
+		
+		/**function that add station point layer when Station -> Fdacs weather data info checkbox is checked
+			fawnBox: glAttrFdacswx.visible
+		*/
+		function fdacsStationPawn(fdacsBox) {
             var zoomScale = map.getZoom();
-            ZoomInOutScale(glAttrFdacswxTemp, zoomScale);
-            // for(var i = 0; i < glAttrFdacswxTemp.graphics.length; i++){
-            //   var p1 = new Point();
-            //   p1 = glAttrFdacswxTemp.graphics[i].geometry;
-            //   for( var j = 0; j < glAttrFdacswxTemp.graphics.length; j++){ 
-            //       var p2 = new Point();
-            //       p2 = glAttrFdacswxTemp.graphics[j].geometry;  
-            
-            //       if(Math.sqrt((p1.x - p2.x)*(p1.x - p2.x) + (p1.y - p2.y)*(p1.y - p2.y)) < 0.15 && (p2.y - p1.y) > 0)
-            //       {
-            //         glAttrFdacswxTemp.graphics[j].visible = false;
-            //       }
-            //   }
-            // }
+            ZoomInOutScale(glAttrFdacswx, zoomScale);			
+			if (fdacsBox) {
+				var tempSymbol = new SimpleMarkerSymbol().setSize(10).setColor("green");
+				var i = 0;
+				while(glAttrFdacswx.graphics[i] != null){
+					glAttrFdacswx.graphics[i].setSymbol(tempSymbol);
+					i++;
+				}
 
-            glAttrFdacswxTemp.visible = GetWindSpeedFdacswx.checked;
-            if (glAttrFdacswxTemp.visible == true) {
-            // var tempSymbol = new SimpleMarkerSymbol().setSize(10).setColor("green");
-            var i = 0;
-              while(glAttrFdacswxTemp.graphics[i] != null){
-                var t = new TextSymbol(glAttrFdacswxTemp.graphics[i].attributes.wind_speed).setColor("green").setHaloSize(30);
-                t.yoffset = -20;
-                glAttrFdacswxTemp.graphics[i].setSymbol(t);
-                i++;
-              }
-            }else{
-              var b = 0;
-              while(glAttrFdacswxTemp.graphics[b] != null){
-                glAttrFdacswxTemp.graphics[b].setSymbol(null);
-                b++;
-              }
-            } 
+				glAttrFdacswxTemp.show();
+				glAttrFdacswxTemp.visible = true;
+			} else {
+				var b = 0;
+				while(glAttrFdacswx.graphics[b] != null){
+					glAttrFdacswx.graphics[b].setSymbol(null);
+					b++;
+				}
+
+				glAttrFdacswxTemp.hide();
+				glAttrFdacswxTemp.visible = false;
+			} 			
+		}
+
+
+
+//customizing temperature layer for both fawn and fdacs
+        on(tempLayer, "change", function(){
+			console.log("tempLayer is clicked");
+            map.removeLayer(pinpointLayer);
+			var stationChecked = toggleCheckbox(windLayer, rainLayer);
+			if (FawnControlBox.checked) {
+				if (stationChecked) {
+					var b = 0;
+					while(gl_attr.graphics[b] != null){
+						gl_attr_temp.graphics[b].setSymbol(null);
+						b++;
+					}
+				}
+
+			gl_attr_temp.visible = tempLayer.checked;
+			if (gl_attr_temp.visible == true) {
+				var i = 0;
+				while(gl_attr_temp.graphics[i] != null){
+					
+					var t = new TextSymbol(gl_attr_temp.graphics[i].attributes.temp10mF).setColor("purple").setHaloSize(30);
+					t.xoffset = 0;
+					t.yoffset = -20;
+					gl_attr_temp.graphics[i].setSymbol(t);
+					i++;
+				}
+			
+				}else{
+					var b = 0;
+					while(gl_attr_temp.graphics[b] != null){
+						gl_attr_temp.graphics[b].setSymbol(null);
+						b++;
+					}
+		
+				}				
+
+			} 
+			
+			if (FdacswxControlBox.checked) {
+				if (stationChecked) {
+					var b = 0;
+					while(glAttrFdacswxTemp.graphics[b] != null){
+					  glAttrFdacswxTemp.graphics[b].setSymbol(null);
+					  b++;
+					}
+				}
+				var zoomScale = map.getZoom();
+				ZoomInOutScale(glAttrFdacswxTemp, zoomScale);	
+				glAttrFdacswxTemp.visible = tempLayer.checked;
+				if (glAttrFdacswxTemp.visible == true) {
+					var i = 0;
+					while(glAttrFdacswxTemp.graphics[i] != null){
+						var temp = glAttrFdacswxTemp.graphics[i].attributes.dry_bulb_air_temp;
+						
+						var t = new TextSymbol(temp).setColor("green").setHaloSize(30);
+						t.yoffset = -20;
+						glAttrFdacswxTemp.graphics[i].setSymbol(t);
+						i++;
+					}
+				}else{
+					var b = 0;
+					while(glAttrFdacswxTemp.graphics[b] != null){
+						glAttrFdacswxTemp.graphics[b].setSymbol(null);
+						b++;
+					}
+				}				
+			} 
+        });
+//customizing rainfall Layer for both fawn and fdacs
+
+		on(rainLayer, "change", function(){
+			console.log("rainLayer is clicked");
+			map.removeLayer(pinpointLayer);
+			var stationChecked = toggleCheckbox(tempLayer, windLayer);
+			if (FawnControlBox.checked) {
+				
+				if (stationChecked) {
+					var b = 0;
+					while (gl_attr_temp.graphics[b] != null) {
+						gl_attr_temp.graphics[b].setSymbol(null);
+						++b;
+					}						
+				}
+
+				gl_attr_temp.visible = rainLayer.checked;
+				
+				if (gl_attr_temp.visible) {
+					//console.log("FAWN is clicked");
+					var i = 0;
+					var zoomScale = map.getZoom();
+					ZoomInOutScale(glAttrFdacswxTemp, zoomScale);					
+					while (gl_attr_temp.graphics[i] != null) {
+						//0 number won't show on the map, need to change the 0 number to string in order to show on the map
+						var temp = gl_attr_temp.graphics[i].attributes.rainFall2mInch;
+						temp = temp.toString();
+						var t = new TextSymbol(temp).setColor("purple").setHaloSize(30);
+						
+						t.yoffset = -20;
+						gl_attr_temp.graphics[i].setSymbol(t);
+						
+						i++;
+						
+					}
+					
+				} else {
+					var b = 0;
+					while (gl_attr_temp.graphics[b] != null) {
+						gl_attr_temp.graphics[b].setSymbol(null);
+						++b;
+					}
+				}
+			}
+			if (FdacswxControlBox.checked) {
+				if (stationChecked) {
+					var b = 0;
+					while(glAttrFdacswxTemp.graphics[b] != null){
+						glAttrFdacswxTemp.graphics[b].setSymbol(null);
+						++b;
+					}
+				}
+				
+				var zoomScale = map.getZoom();
+				ZoomInOutScale(glAttrFdacswxTemp, zoomScale);
+
+				glAttrFdacswxTemp.visible = rainLayer.checked;
+				if (glAttrFdacswxTemp.visible) {
+					//console.log("FDACS is clicked");
+					var i = 0;
+					while(glAttrFdacswxTemp.graphics[i] != null){
+						var t = new TextSymbol(glAttrFdacswxTemp.graphics[i].attributes.rainfall).setColor("green").setHaloSize(30);
+						//console.log("fadacs rainfall is " + glAttrFdacswxTemp.graphics[i].attributes.rainfall);
+						t.yoffset = -20;
+						glAttrFdacswxTemp.graphics[i].setSymbol(t);
+						//console.log(glAttrFdacswxTemp.graphics[i].attributes);
+						i++;
+						
+					}
+				} else {
+					var b = 0;
+					while(glAttrFdacswxTemp.graphics[b] != null){
+						glAttrFdacswxTemp.graphics[b].setSymbol(null);
+						b++;
+					}
+				} 				
+			}
+		});
+
+		
+//customizing wind layer for both fawn and fdacs
+        on(windLayer, "change", function(){
+			console.log("windLayer is clicked");
+            map.removeLayer(pinpointLayer);
+			var stationChecked = toggleCheckbox(tempLayer, rainLayer);
+			if (FawnControlBox.checked) {
+				if (stationChecked) {
+
+					var b = 0;
+					while(gl_attr_temp.graphics[b] != null){
+						gl_attr_temp.graphics[b].setSymbol(null);
+						b++;
+					}
+				}
+
+				gl_attr_temp.visible = windLayer.checked;
+				if (gl_attr_temp.visible == true) {
+					
+					var i = 0;
+					while(gl_attr_temp.graphics[i] != null){
+						var t = new TextSymbol(gl_attr_temp.graphics[i].attributes.windSpeed10mMph).setColor("purple").setHaloSize(30);
+						t.xoffset = 0;
+						t.yoffset = -20;
+						gl_attr_temp.graphics[i].setSymbol(t);
+						//console.log(glAttrFdacswxTemp.graphics[i].attributes);
+						i++;
+						//console.log(gl_attr_temp.graphics[i].attributes);
+					}
+
+				} else {
+					var b = 0;
+					while(gl_attr_temp.graphics[b] != null){
+						gl_attr_temp.graphics[b].setSymbol(null);
+						b++;
+					}
+				}				
+			}
+		
+			if (FdacswxControlBox.checked) {
+				if (stationChecked) {
+					rainLayer.checked = false;
+					tempLayer.checked = false;
+					var b = 0;
+					while(glAttrFdacswxTemp.graphics[b] != null){
+						glAttrFdacswxTemp.graphics[b].setSymbol(null);
+						b++;
+					}
+				}
+
+				var zoomScale = map.getZoom();
+				ZoomInOutScale(glAttrFdacswxTemp, zoomScale);
+
+				glAttrFdacswxTemp.visible = windLayer.checked;
+				if (glAttrFdacswxTemp.visible == true) {
+
+					var i = 0;
+					while(glAttrFdacswxTemp.graphics[i] != null){
+						var t = new TextSymbol(glAttrFdacswxTemp.graphics[i].attributes.wind_speed).setColor("green").setHaloSize(30);
+						t.yoffset = -20;
+						glAttrFdacswxTemp.graphics[i].setSymbol(t);
+						i++;
+					}
+				} else {
+					var b = 0;
+					while(glAttrFdacswxTemp.graphics[b] != null){
+						glAttrFdacswxTemp.graphics[b].setSymbol(null);
+						b++;
+					}
+				} 
+			}
         });   
+		
+		/**function that allow one checkbox checked each click.
+			box1: dom checkbox1
+			box2: dom checkbox2
+			return true if other checkbox state is changed
+				   else otherwise*/
+		function toggleCheckbox(box1, box2) {
+				//console.log("function is clicked");
+				if (box1.checked || box2.checked) {
+					box1.checked = false;
+					box2.checked = false;
+					return true;
+				}
+				return false;
+		}	
+/*LAYER CONTROL END---------------------------------------------------------------*/
+
+
 
         // MAP zoom event
         connect.connect(map,"onZoomEnd",function(){
             var zoomScale = map.getZoom();
-            // console.log(glAttrFdacswxTemp.graphics[10].attributes.wind_speed.length);
-            // console.log(glAttrFdacswxTemp.graphics[10].attributes.wind_speed.substring(0,4));
-            if (GetWindSpeedFdacswx.checked == true || GetTempFdacswx.checked == true) 
+
+            if (windLayer.checked || tempLayer.checked || rainLayer.checked) 
             {
               // console.log("1");
               ZoomInOutScale(glAttrFdacswxTemp, zoomScale);
@@ -626,13 +560,6 @@
           var heightPop = height * 0.8;
           $('.esriPopupWrapper').css("height", heightPop);
           $('.esriPopupWrapper').css("width", widthPop);
-
-          // no need to set up minwidth and minheight anymore
-          // $('.esriPopupWrapper').css("min-height", height * 0.7 - 25 ); // this line success for fix size
-          // $('.esriPopupWrapper').css("max-height", height * 0.7 - 25 ); 
-          // $('.esriPopupWrapper').css("min-width", width * 0.8 - 25 ); 
-          // $('.esriPopupWrapper').css("max-width", width * 0.8 - 25); 
-
           // wipe out unnecessary icons
           query(".restore").style("display","none");
           query('.zoomTo').style("display", "none");
@@ -662,15 +589,7 @@
           $(document).ready(function() {
             $(".esriPopupWrapper").resizable({
               start: function(e, ui) {
-                // var height_temp = $('.esriPopupWrapper').height();
-                // var width_temp = $('.esriPopupWrapper').width()
-                // if (chart != null) {
-                //   chart.setSize(width_temp - 22, height_temp - 170, doAnimation = true);
-                // }
-                // document.getElementsByClassName("esriPopupWrapper")[0].style.minWidth = null;
-                // document.getElementsByClassName("esriPopupWrapper")[0].style.maxWidth = null;
-                // document.getElementsByClassName("esriPopupWrapper")[0].style.minHeight = null;
-                // document.getElementsByClassName("esriPopupWrapper")[0].style.maxHeight = null;
+
                 query('.contentPane').style('max-height', 'none');
               },
               resize: function(e,ui){
@@ -693,23 +612,11 @@
         });
 
         connect.connect(popup,"onHide",function(){
+			console.log("!!!!!!!!!!!!!");
             gl_attr.infoTemplate = templateFawn;
             glAttrFdacswx.infoTemplate = templateFdacswx;
         })
 
-        // function for drag and a little modify
-        // function draggable(){
-        //   $(document).ready(function() {     
-        //       $(".esriPopupWrapper").draggable({
-        //           handle: ".titlePane",
-        //           start: function() {
-        //           // 
-        //           }
-        //       });
-        //       $('.pointer').remove();
-        //       $('.outerPointer').remove();
-        //   })
-        // }
 
         function draggableUsingDojo(){
             var handle = query(".titlePane", map.infoWindow.domNode)[0];
@@ -783,11 +690,11 @@
 
 
 
+/*
 
 
 
-
-
+*/
 
 
 

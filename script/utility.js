@@ -15,24 +15,7 @@
           evt.currentTarget.className += "active";
   }
 
-  function openSearchBar(x){
-    if (x.id == "searchBarForFadacs") 
-    {
-      if (document.getElementById("searchForFadacs").style.display == 'none'){
-          document.getElementById("searchForFadacs").style.display = "block";
-      }else{
-          document.getElementById("searchForFadacs").style.display = "none";
-      } 
-    }
-    else
-    {
-      if (document.getElementById("searchForFawn").style.display == 'none'){
-          document.getElementById("searchForFawn").style.display = "block";
-      }else{
-          document.getElementById("searchForFawn").style.display = "none";
-      } 
-    } 
-  }
+
 
   function openForcast(evt, TagName, lng, lat){
     openTag(evt, TagName);
@@ -149,7 +132,7 @@
           document.getElementById("myDropdown").classList.toggle("show")
           //document.getElementById("map").classList.toggle("map_change");
           //document.getElementById("map_panel").classList.toggle("panel_change");
-          document.getElementById("map_and_panel").classList.toggle("map_change");
+          //document.getElementById("map_and_panel").classList.toggle("map_change");
   }
 
 
